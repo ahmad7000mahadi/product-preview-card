@@ -2,7 +2,7 @@
 
 ## 🔗 Live Site
 
-  * **Live Demo:** [https://ahmad7000mahadi.github.io/product-preview-card/]
+  * **Live Demo:** [https://github.com/ahmad7000mahadi/product-preview-card]
   * **Frontend Mentor Solution:** [https://github.com/ahmad7000mahadi/product-preview-card]
 
 ## 📝 Overview
