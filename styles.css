@@ -5,7 +5,7 @@
 :root {
   /* Colors Primary*/
   --color-green-500: hsl(158, 36%, 37%);
-  --color-green-700: hsl(158, 42%, 18%); /* US-5: Button hover state */
+  --color-green-700: hsl(158, 42%, 18%); 
 
   /* Colors Neutral */
   --color-black: hsl(212, 21%, 14%); /* Product name */
@@ -217,7 +217,6 @@ body {
 @media (min-width: 600px) {
   .card {
     flex-direction: row;
-    /* Fix: Set correct width for desktop 700px / 44rem */
     max-width: var(--card-desktop-width);
   }
 
@@ -239,7 +238,6 @@ body {
   .card__content {
     /* Set equal width for two columns */
     flex: 1 1 50%;
-    /* US-1: Increase vertical padding for desktop */
     padding: var(--space-lg);
     /* Adjust spacing for desktop */
     gap: 1.25rem;
