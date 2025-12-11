@@ -1,0 +1,248 @@
+/* -------------------- */
+/* 1. SETUP & VARIABLES */
+/* -------------------- */
+
+:root {
+  /* Colors Primary*/
+  --color-green-500: hsl(158, 36%, 37%);
+  --color-green-700: hsl(158, 42%, 18%); /* US-5: Button hover state */
+
+  /* Colors Neutral */
+  --color-black: hsl(212, 21%, 14%); /* Product name */
+  --color-grey: hsl(228, 12%, 48%); /* Category, description, old price */
+  --color-cream: hsl(30, 38%, 92%); /* Body background */
+  --color-white: hsl(0, 0%, 100%); /* Card background, button text */
+
+  /* Spacing */
+  --space-xs: 0.5rem; /* 8px */
+  --space-sm: 1rem; /* 16px */
+  --space-md: 1.5rem; /* 24px */
+  --space-lg: 2rem; /* 32px */
+
+  /* Typography Variables: Define minimum, maximum, and preferred sizes */
+
+  --font-family-body: "Montserrat", sans-serif;
+  --font-family-heading: "Fraunces", serif;
+
+  --font-size-body-min: 0.8125rem; /* ~13px */
+  --font-size-body-max: 0.875rem; /* 14px */
+  --font-size-body-preferred: 0.5vw; /* Fluid size */
+
+  --font-size-category-min: 0.75rem; /* 12px */
+  --font-size-category-max: 0.8125rem; /* ~13px */
+  --font-size-category-preferred: 0.5vw;
+
+  --font-size-heading-min: 2rem; /* 32px */
+  --font-size-heading-max: 2.5rem; /* 35.2px */
+  --font-size-heading-preferred: 6vw; /* More aggressive fluid size for heading */
+
+  --font-size-price-min: 2rem; /* 32px */
+  --font-size-price-max: 2.2rem;
+  --font-size-price-preferred: 6vw;
+
+  /* Font Weight */
+  --font-weight-regular: 500;
+  --font-weight-bold: 700;
+  --font-weight-bolder: 900;
+
+  --card-desktop-width: 44rem; /* 704px */
+
+  /* Border radius */
+  --border-radius-md: 0.625rem; /* ~10px */
+}
+
+/* Minimal Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* -------------------- */
+/* 2. BODY LAYOUT       */
+/* -------------------- */
+
+body {
+  background-color: var(--color-cream);
+  font-family: var(--font-family-body);
+  font-size: clamp(
+    var(--font-size-body-min),
+    var(--font-size-body-preferred),
+    var(--font-size-body-max)
+  );
+  color: var(--color-grey);
+
+  /* Center the card vertically and horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  /* Padding for safety on small screens (Logical Property) */
+  padding-block: var(--space-md);
+  padding-inline: var(--space-sm);
+}
+
+/* -------------------- */
+/* 3. CARD COMPONENTS (MOBILE-FIRST) */
+/* -------------------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-md);
+  width: min(100%, max-width(375px));
+  /* Box Shadow: Optional polish */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensures image corners are rounded */
+}
+
+/* --- Image Section --- */
+
+.card__image-container img {
+  width: 100%;
+  border-top-left-radius: var(--border-radius-md);
+  border-top-right-radius: var(--border-radius-md);
+  object-fit: cover;
+}
+
+/* --- Content Section --- */
+
+.card__content {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Slightly less than 1.5rem (20px) */
+}
+
+.card__category {
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  font-size: clamp(
+    var(--font-size-category-min),
+    var(--font-size-category-preferred),
+    var(--font-size-category-max)
+  );
+  font-weight: var(--font-weight-regular);
+  color: var(--color-grey);
+}
+
+.card__title {
+  font-family: var(--font-family-heading);
+  font-size: 2.5rem;
+  color: var(--color-black);
+  line-height: 1;
+  font-weight: var(--font-weight-bold);
+}
+
+.card__description {
+  line-height: 1.6;
+  color: var(--color-grey);
+  font-size: 1.1rem;
+}
+
+/* --- Pricing --- */
+
+.card__pricing {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md); /* Corrected spacing between prices */
+  margin-block-start: 0.75rem; /* Add a little space above pricing */
+}
+
+.card__price-current {
+  font-family: var(--font-family-heading);
+  color: var(--color-green-500);
+  font-size: clamp(
+    var(--font-size-price-min),
+    var(--font-size-price-preferred),
+    var(--font-size-price-max)
+  );
+  font-weight: var(--font-weight-bolder);
+}
+
+.card__price-old {
+  text-decoration: line-through;
+  font-weight: var(--font-weight-regular);
+  font-size: clamp(
+    var(--font-size-body-min),
+    var(--font-size-body-preferred),
+    var(--font-size-body-max)
+  );
+  color: var(--color-grey);
+}
+
+/* --- Button --- */
+
+.card__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  width: 100%;
+  background-color: var(--color-green-500);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(
+    var(--font-size-body-min),
+    var(--font-size-body-preferred),
+    var(--font-size-body-max)
+  );
+  cursor: pointer;
+  transition: background-color 0.2s ease; /* For smooth hover */
+}
+
+.card__button:hover,
+.card__button:focus-visible {
+  background-color: var(--color-green-700);
+  outline: none;
+}
+
+.card__button svg {
+  /* Sizing the SVG icon */
+  width: 0.8rem;
+}
+
+/* -------------------- */
+/* 4. DESKTOP ADAPTATION (Switch to Horizontal Layout) - FIX FOR DESKTOP */
+/* -------------------- */
+
+@media (min-width: 600px) {
+  .card {
+    flex-direction: row;
+    /* Fix: Set correct width for desktop 700px / 44rem */
+    max-width: var(--card-desktop-width);
+  }
+
+  /* --- Image Section --- */
+  .card__image-container {
+    /* Set equal width for two columns */
+    flex: 1 1 50%;
+  }
+
+  .card__image-container img {
+    /* Fix: Ensure image height covers the entire component */
+    height: 100%;
+    border-top-right-radius: 0;
+    border-top-left-radius: var(--border-radius-md);
+    border-bottom-left-radius: var(--border-radius-md);
+  }
+
+  /* --- Content Section --- */
+  .card__content {
+    /* Set equal width for two columns */
+    flex: 1 1 50%;
+    /* US-1: Increase vertical padding for desktop */
+    padding: var(--space-lg);
+    /* Adjust spacing for desktop */
+    gap: 1.25rem;
+    justify-content: space-between; /* Space out content vertically */
+  }
+}
